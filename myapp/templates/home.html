@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+    {% if not pet %}
+  <h1>No Species found</h1>
+    {% endif %}
+    {% for pet in pet %}
+    <div class="col-md-4 mb-5">  <!-- 3 cards per row -->
+        <div class="card h-100" >
+            <img src="{{pet.image}}" alt="..." class="card-img-top"style="height: 400px; object-fit: cover;">
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title" style="text-transform: uppercase;"><b>{{pet.name}}</b></h5>
+                <p class="card-text">Available: {{pet.quantity}}</p>
+                <p class="card-text">Species: {{pet.species}}</p>
+              
+                <form action="{% url 'add_adoption' %}" method="post">
+                     {% if pet.quantity > 0 %}
+                    {% csrf_token %}
+                    <input type="hidden" name="pk" value="{{pet.pk}}">
+                    <button type="submit" class="btn btn-primary w-100">Adopt</button>
+                 </form>
+               {% endif %}
+                </div>
+                </div>
+                </div>
+                {% endfor %}
+            </div>
+
+  
+{% endblock content %}
+

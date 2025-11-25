@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+<style>
+.donation-container {
+  text-align: center;
+  color: rgb(108, 142, 171);
+  background-color: whitesmoke;
+  padding: 30px;
+  border-radius: 12px;
+}
+.payment-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin: auto;
+}
+</style>
+
+<div class="container my-5 donation-container">
+  <p>
+    Donating to help street dogs is a simple yet powerful act of kindness that can drastically improve their lives. 
+    Even a small contribution can provide essential food, clean water, and critical medical care like vaccinations and spay/neuter surgeries. 
+    Every bit of help gives them hope. 
+  </p><br>
+
+  <div class="row justify-content-center">
+    <!-- Esewa -->
+    <div class="col-md-4 mb-3">
+      <div class="card h-100 text-center payment-card">
+        <div class="card-body">
+          <img src="https://play-lh.googleusercontent.com/MRzMmiJAe0-xaEkDKB0MKwv1a3kjDieSfNuaIlRo750_EgqxjRFWKKF7xQyRSb4O95Y" alt="Esewa">
+          <h5 class="mt-2">Esewa</h5>
+          <button class="btn btn-success" type="button" id="esewa-btn">Donate</button>
+
+          <!-- Hidden Esewa image/info -->
+          <div id="esewa-box" style="display:none; margin-top:20px;">
+            <img src="{% static 'photo/esewa.jpeg' %}" alt="Esewa QR" class="img-fluid rounded">
+            <p class="mt-2">Esewa Number: <b>9826916892</b></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bank Transfer -->
+    <div class="col-md-4 mb-3">
+      <div class="card h-100 text-center payment-card">
+        <div class="card-body">
+          <img src="https://static.vecteezy.com/system/resources/previews/003/241/181/non_2x/bank-transfer-and-exchange-vector.jpg" alt="Bank Transfer">
+          <h5 class="mt-2">Bank Transfer</h5>
+          <button class="btn btn-success" type="button" id="bank-btn">Donate</button>
+
+          <!-- Hidden Bank details -->
+          <div id="bank-box" style="display:none; margin-top:20px;">
+            <img src="{% static 'photo/esewa.jpeg' %}" alt="Bank" class="img-fluid rounded">
+            <p class="mt-2">Bank Account: <b>1234567890</b></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Show Esewa info
+document.getElementById("esewa-btn").addEventListener("click", function() {
+  document.getElementById("esewa-box").style.display = "block";
+});
+
+// Show Bank info
+document.getElementById("bank-btn").addEventListener("click", function() {
+  document.getElementById("bank-box").style.display = "block";
+});
+</script>
+
+{% endblock content %}
